@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Mad Libs Final</title>
+    <link rel="stylesheet" href="main.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="formExample.js" type="text/javascript"></script>
+
+</head>
+<img class="smiley" src="images/mad-lib-happy-face.png" alt="madlib smiling face"/>
+<img class="logo" src="images/ng-mad-libs-logo.png" alt="angular logo"/>
+<body ng-app="formExample">
+<div ng-controller="ExampleController" >
+   <form class="inputs" name="userForm" ng-hide="isFormHidden" novalidate>
+    <div class="first">
+        <input name="maleName" type="text" placeholder="name" ng-model="user.maleName" required autocomplete="off" />
+        <p ng-show="userForm.maleName.$invalid && !userForm.maleName.$pristine" class="help-block">Your name is required.</p>
+        <input name="jobTitle" type="text" placeholder="email" ng-model="user.jobTitle" required autocomplete="off" />
+        <p ng-show="userForm.jobTitle.$invalid && !userForm.jobTitle.$pristine" class="help-block">Enter a job title</p>
+        <input name="tediousTask" type="text" placeholder="gender" ng-model="user.tediousTask" required autocomplete="off" />
+        <p ng-show="userForm.tediousTask.$invalid && !userForm.tediousTask.$pristine" class="help-block">Enter a tedious consuming task</p>
+    </div>
+    <div class="second">
+        <input name="dirtyTask" type="text" placeholder="dirty task" ng-model="user.dirtyTask" required autocomplete="off" />
+        <p ng-show="userForm.dirtyTask.$invalid && !userForm.dirtyTask.$pristine" class="help-block">Enter a dirty task</p>
+        <input name="celebrity" type="text" placeholder="celebrity" ng-model="user.celebrity" required autocomplete="off" />
+        <p ng-show="userForm.celebrity.$invalid && !userForm.celebrity.$pristine" class="help-block">Enter a less obxoxious Celebrity's name</p>
+        <input name="uselessSkill" type="text" placeholder="useless skill" ng-model="user.uselessSkill" required autocomplete="off" />
+        <p ng-show="userForm.uselessSkill.$invalid && !userForm.uselessSkill.$pristine" class="help-block">Enter a totally useless skill, don't enter Ruby</p>
+    </div>
+    <div class="third">
+        <input name="adjective" type="text" placeholder="adjective" ng-model="user.adjective" required autocomplete="off" />
+        <p ng-show="userForm.adjective.$invalid && !userForm.adjective.$pristine" class="help-block">Please enter an adjective</p>
+        <input name="obnoxiousCelebrity" type="text" placeholder="obnoxious celebrity" ng-model="user.obnoxiousCelebrity" required autocomplete="off" />
+        <p ng-show="userForm.obnoxiousCelebrity.$invalid && !userForm.obnoxiousCelebrity.$pristine" class="help-block">Please enter kim k</p>
+        <input name="hugeNumber" type="text" placeholder="a huge number" ng-model="user.hugeNumber" ng-minlength ="{ 5 }" required autocomplete="off" />
+        <p ng-show="userForm.hugeNumber.$invalid && !userForm.hugeNumber.$pristine" class="help-block">Enter with 5 or more digits</p>
+    </div>
+       <button class="generateButton" ng-disabled="userForm.$invalid" ng-click="generate(user)" >Generate MadLib</button>
+       <button class="clearButton" ng-click="clear()">Clear all</button>
+   </form>
+
+    <div ng-hide="isMadLibFormHidden" class="generatedMadLib">
+        <p><span>{{master.maleName}}</span> was a <span>{{master.jobTitle}}</span> who loved technology. Although he loved parts
+            of his job,  he absolutely hated <span>{{master.tediousTask}}</span> <br> and <span>{{master.dirtyTask}}</span> So,
+            <span>{{master.maleName}}</span>
+            met with his life mentor <span>{{master.celebrity}}</span> who told him to learn how to
+            <span>{{master.uselessSkill}}</span> so he studied programming instead.</p>
+        <p>What a great decision! With his new skills, <span>{{master.maleName}}</span> built a <span>{{master.adjective}}</span>
+            robot named <span>{{master.obnoxiousCelebrity}}</span> that not only loved <span>{{master.dirtyTask}}</span>
+            but did it <span>{{master.hugeNumber}}</span> faster.
+        </p>
+        <button ng-click="reset(user)">Reset</button>
+    </div>
+
+</div>
+
+
+</body>
+</html>
